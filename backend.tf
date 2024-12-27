@@ -59,20 +59,20 @@ resource "aws_iam_role_policy_attachment" "attach_policy" {
 resource "aws_s3_bucket" "tf_bucket" {
   bucket = "kiosk-tf-s3-bucket" # Change this to a globally unique bucket name
 }
-
+# Enable versioning for S3 bucket
 resource "aws_s3_bucket_versioning" "versioning_tf_bucket" {
   bucket = aws_s3_bucket.tf_bucket.id
   versioning_configuration {
     status = "Enabled"
   }
 }
-
+#Enable server side encryption for S3 bucket
 resource "aws_s3_bucket_server_side_encryption_configuration" "tf_bucket" {
   bucket = aws_s3_bucket.tf_bucket.id
 
   rule {
     apply_server_side_encryption_by_default {
-      sse_algorithm = "AES256"
+      sse_algorithm = "AES256" 
     }
   }
 }
