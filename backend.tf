@@ -54,6 +54,7 @@ resource "aws_iam_policy" "terraform_policy" {
 resource "aws_iam_role_policy_attachment" "attach_policy" {
   role       = aws_iam_role.terraform_user.name
   policy_arn = aws_iam_policy.terraform_policy.arn
+
 }
 # Create an S3 bucket
 resource "aws_s3_bucket" "tf_bucket" {
@@ -66,7 +67,8 @@ resource "aws_s3_bucket_versioning" "versioning_tf_bucket" {
     status = "Enabled"
   }
 }
-#Enable server side encryption for S3 bucket
+
+# Enable server side encryption for S3 bucket
 resource "aws_s3_bucket_server_side_encryption_configuration" "tf_bucket" {
   bucket = aws_s3_bucket.tf_bucket.id
 
