@@ -10,7 +10,7 @@ terraform {
 
   backend "s3" {
     # Match the S3 bucket name already created in backend.tf
-    bucket = "kiosk-tf-s3-bucket-jen"
+    bucket = "kiosk-tf-s3-bucket"
     # Path in the bucket to store the state file
     key = "terraform/state/terraform.tfstate"
     # Region where the bucket is located

@@ -54,7 +54,7 @@ resource "aws_iam_role_policy_attachment" "attach_policy" {
 }
 # Create an S3 bucket
 resource "aws_s3_bucket" "tf_bucket" {
-  bucket = "kiosk-tf-s3-bucket-jen" # Change this to a globally unique bucket name
+  bucket = "kiosk-tf-s3-bucket" # Change this to a globally unique bucket name
 }
 # Enable versioning for S3 bucket
 resource "aws_s3_bucket_versioning" "versioning_tf_bucket" {
