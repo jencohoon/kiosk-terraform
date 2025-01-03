@@ -1,7 +1,3 @@
-provider "aws" {
-  region = "us-east-1"
-}
-
 # Create IAM Role for Terraform
 resource "aws_iam_role" "terraform_user" {
   name = "terraform-user"
@@ -29,8 +25,8 @@ resource "aws_iam_policy" "terraform_policy" {
     Version = "2012-10-17",
     Statement = [
       {
-        Effect   = "Allow",
-        Action   = [
+        Effect = "Allow",
+        Action = [
           "s3:ListBucket",
           "s3:GetObject",
           "s3:PutObject",
@@ -74,7 +70,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "tf_bucket" {
 
   rule {
     apply_server_side_encryption_by_default {
-      sse_algorithm = "AES256" 
+      sse_algorithm = "AES256"
     }
   }
 }
