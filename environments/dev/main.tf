@@ -10,9 +10,9 @@ terraform {
 
   backend "s3" {
     # Match the S3 bucket name already created in backend.tf
-    bucket = "kiosk-tf-s3-bucket"
+    bucket = "kiosk-tf-s3-bucket-jen"
     # Path in the bucket to store the state file
-    key = "terraform/state/terraform.tfstate"
+    key = "dev/terraform-state/terraform.tfstate"
     # Region where the bucket is located
     region = "us-east-1"
     # Match the DynamoDB table name created in backend.tf
