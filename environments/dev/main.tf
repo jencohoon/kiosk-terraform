@@ -10,7 +10,8 @@ terraform {
 
   backend "s3" {
     # Match the S3 bucket name already created in backend.tf
-    bucket = "kiosk-tf-s3-bucket-jen"
+    bucket = "kiosk-tf-s3-bucket"
+
     # Path in the bucket to store the state file
     key = "dev/terraform-state/terraform.tfstate"
     # Region where the bucket is located
@@ -29,15 +30,5 @@ provider "aws" {
       Environment = "Dev"
       Name        = "managed-by-terraform"
     }
-  }
-}
-
-
-resource "aws_instance" "tf_instance" {
-  ami           = "ami-0c02fb55956c7d316" # Amazon Linux 2 AMI
-  instance_type = "t2.micro"
-
-  tags = {
-    Name = "Test-EC2-Instance"
   }
 }

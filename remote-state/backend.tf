@@ -34,7 +34,9 @@ resource "aws_iam_policy" "terraform_policy" {
         ],
         Resource = [
           "arn:aws:s3:::kiosk-tf-s3-bucket",
-          "arn:aws:s3:::kiosk-tf-s3-bucket/*"
+          "arn:aws:s3:::kiosk-tf-s3-bucket/*",
+          "arn:aws:s3:::kiosk-codebuild-logs",
+          "arn:aws:s3:::kiosk-codebuild-logs/*"
         ]
       },
       {
