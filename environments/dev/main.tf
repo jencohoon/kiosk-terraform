@@ -32,3 +32,49 @@ provider "aws" {
     }
   }
 }
+
+
+resource "aws_s3_bucket" "codebuild_logs" {
+  bucket = "kiosk-codebuild-logs"
+}
+
+
+resource "aws_s3_bucket" "codepipeline_bucket" {
+  bucket = "kiosk-codepipeline-artifacts"
+}
+
+
+resource "aws_iam_role" "codebuild_role" {
+  name = "CodeBuildServiceRole"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect = "Allow",
+        Principal = {
+          Service = "codebuild.amazonaws.com"
+        },
+        Action = "sts:AssumeRole"
+      }
+    ]
+  })
+}
+
+
+resource "aws_iam_role" "codepipeline_new_role" {
+  name = "CodePipelineServiceRole"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect = "Allow",
+        Principal = {
+          Service = "codepipeline.amazonaws.com"
+        },
+        Action = "sts:AssumeRole"
+      }
+    ]
+  })
+}
