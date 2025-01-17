@@ -6,6 +6,8 @@ phases:
       - curl -o terraform.zip https://releases.hashicorp.com/terraform/1.5.5/terraform_1.5.5_linux_amd64.zip
       - unzip terraform.zip -d /usr/local/bin/
       - rm terraform.zip
+      - echo "Verifying Terraform installation"
+      - terraform --version  # Ensure Terraform is correctly installed
   pre_build:
     commands:
       - echo "Initializing Terraform backend"
@@ -14,6 +16,7 @@ phases:
     commands:
       - echo "Running Terraform plan"
       - terraform plan
+      - echo "Terraform plan completed successfully"
       - echo "Applying Terraform changes"
       - terraform apply -auto-approve
 artifacts:
