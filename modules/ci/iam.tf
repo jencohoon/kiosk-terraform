@@ -1,3 +1,4 @@
+# CodePipeline Role
 resource "aws_iam_role" "codepipeline_new_role" {
   name = "codepipeline-role"
 
@@ -15,6 +16,7 @@ resource "aws_iam_role" "codepipeline_new_role" {
   })
 }
 
+# CodePipeline Policy
 resource "aws_iam_policy" "codepipeline_policy" {
   name        = "codepipeline-policy"
   description = "CodePipeline access policy"
@@ -41,11 +43,13 @@ resource "aws_iam_policy" "codepipeline_policy" {
   })
 }
 
+# Attach CodePipeline Policy to the Role
 resource "aws_iam_role_policy_attachment" "attach_codepipeline_policy" {
   role       = aws_iam_role.codepipeline_new_role.name
   policy_arn = aws_iam_policy.codepipeline_policy.arn
 }
 
+# CodeBuild Role
 resource "aws_iam_role" "codebuild_role" {
   name = "codebuild-role"
 
@@ -63,6 +67,7 @@ resource "aws_iam_role" "codebuild_role" {
   })
 }
 
+# CodeBuild Policy
 resource "aws_iam_policy" "codebuild_policy" {
   name        = "codebuild-policy"
   description = "CodeBuild access policy"
@@ -79,11 +84,17 @@ resource "aws_iam_policy" "codebuild_policy" {
         Effect   = "Allow",
         Action   = ["secretsmanager:GetSecretValue"],
         Resource = "*"
+      },
+      {
+        Effect   = "Allow",
+        Action   = ["logs:*"],
+        Resource = "*"
       }
     ]
   })
 }
 
+# Attach CodeBuild Policy to the Role
 resource "aws_iam_role_policy_attachment" "attach_codebuild_policy" {
   role       = aws_iam_role.codebuild_role.name
   policy_arn = aws_iam_policy.codebuild_policy.arn
