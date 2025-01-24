@@ -10,7 +10,7 @@ terraform {
 
   backend "s3" {
     # Match the S3 bucket name already created in backend.tf
-    bucket = "kiosk-tf-s3-bucket"
+    bucket = "UPDATE-ME" # "kiosk-tf-s3-bucket"
 
     # Path in the bucket to store the state file
     key = "dev/terraform-state/terraform.tfstate"
@@ -27,8 +27,8 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Environment = "Dev"
-      Name        = "managed-by-terraform"
+      Environment = var.env
+      Name        = "managed-by-terraform-${var.env}"
     }
   }
 }
