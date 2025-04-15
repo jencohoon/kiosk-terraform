@@ -6,5 +6,3 @@ resource "aws_instance" "tf_instance" {
     Name = var.ec2_instance_name
   }
 }
-
-# IJKL this is a comment 2 for chery-pick test
