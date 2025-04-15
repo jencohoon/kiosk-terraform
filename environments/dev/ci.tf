@@ -4,4 +4,3 @@ module "ci-setup" {
   ec2_instance_name   = "Kiosk-EC2"
 }
 
-# EFGH this is a comment 1 for chery-pick test
