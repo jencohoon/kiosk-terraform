@@ -8,7 +8,7 @@ terraform {
     }
   }
 
-  backend "s3" {
+/*  backend "s3" {
     # Match the S3 bucket name already created in backend.tf
     bucket = "kiosk-tf-s3-bucket"
 
@@ -20,7 +20,7 @@ terraform {
     dynamodb_table = "kiosk-terraform-state-lock"
     encrypt        = true
   }
-}
+} */
 
 provider "aws" {
   region = "us-east-1"
